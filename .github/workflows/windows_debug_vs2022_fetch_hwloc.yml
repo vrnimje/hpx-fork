@@ -6,7 +6,9 @@
 
 name: Windows CI (Debug, VS2022 toolset) with HWLoc fetch
 
-on: [pull_request]
+on:
+  push:
+    branches: [wind_test]
 
 jobs:
   build:
