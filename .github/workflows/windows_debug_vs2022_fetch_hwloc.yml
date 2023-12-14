@@ -46,10 +46,10 @@ jobs:
           cmake --build build --config Debug \
           --target ALL_BUILD \
           -- -maxcpucount:2 -verbosity:minimal -nologo
-    # - name: Install
-    #   shell: bash
-    #   run: |
-    #       cmake --install build --config Debug
+    - name: Install
+      shell: bash
+      run: |
+          cmake --install build --config Debug
     - name: Test
       run: |
           Set-Alias -Name grep -Value 'C:\Program Files\Git\usr\bin\grep.exe'
