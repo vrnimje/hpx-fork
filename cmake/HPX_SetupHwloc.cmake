@@ -44,10 +44,18 @@ else()
         ${HWLOC_ROOT}/include
         CACHE INTERNAL ""
     )
-    set(Hwloc_LIBRARY
+    if(APPLE)
+      set(Hwloc_LIBRARY
+        ${HWLOC_ROOT}/lib/libhwloc.dylib
+        CACHE INTERNAL ""
+      )
+    else()
+      set(Hwloc_LIBRARY
         ${HWLOC_ROOT}/lib/libhwloc.so
         CACHE INTERNAL ""
-    )
+      )
+    endif()
+    
   elseif("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "Win64")
     fetchcontent_declare(
       HWLoc
