@@ -9,6 +9,11 @@ name: macOS CI (Debug) with HWLoc fetch
 on:
   push:
     branches: [wind_test]
+    paths:
+        - ".github/workflows/macos_debug_fetch_hwloc.yml"
+        - "src/**"
+        - "CMakeLists.txt"
+        - "cmake/**"
 
 jobs:
   build:

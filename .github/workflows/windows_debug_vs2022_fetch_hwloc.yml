@@ -9,6 +9,11 @@ name: Windows CI (Debug, VS2022 toolset) with HWLoc fetch
 on:
   push:
     branches: [wind_test]
+    paths:
+        - ".github/workflows/windows_debug_vs2022_fetch_hwloc.yml"
+        - "src/**"
+        - "CMakeLists.txt"
+        - "cmake/**"
 
 jobs:
   build:
