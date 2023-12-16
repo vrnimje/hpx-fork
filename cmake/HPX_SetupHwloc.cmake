@@ -59,7 +59,7 @@ else()
       )
     endif()
 
-  elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
+  elseif("${CMAKE_SIZEOF_VOID_P}" STREQUAL "8")
     fetchcontent_declare(
       HWLoc
       URL https://download.open-mpi.org/release/hwloc/v${HWLOC_VERSION}/hwloc-win64-build-${HWLOC_RELEASE}.zip
