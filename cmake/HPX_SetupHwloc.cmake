@@ -25,7 +25,7 @@ else()
   set(HWLOC_VERSION "2.9")
   set(HWLOC_RELEASE "2.9.3")
   hpx_info(
-    "HPX_WITH_FETCH_HWLOC=${HPX_WITH_FETCH_HWLOC}, Hwloc v{HWLOC_RELEASE} will be fetched using CMake's FetchContent"
+    "HPX_WITH_FETCH_HWLOC=${HPX_WITH_FETCH_HWLOC}, Hwloc v${HWLOC_RELEASE} will be fetched using CMake's FetchContent"
   )
   if(UNIX)
     include(FetchContent)
@@ -59,7 +59,7 @@ else()
       )
     endif()
 
-  elseif("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "Win64" OR CMAKE_SIZEOF_VOID_P EQUAL 8)
+  elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
     fetchcontent_declare(
       HWLoc
       URL https://download.open-mpi.org/release/hwloc/v${HWLOC_VERSION}/hwloc-win64-build-${HWLOC_RELEASE}.zip
