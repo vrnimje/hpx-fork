@@ -81,7 +81,7 @@ else()
         CACHE INTERNAL ""
     )
     set(Hwloc_LIBRARY
-        ${HWLOC_ROOT}/lib/libhwloc.all.a
+        ${HWLOC_ROOT}/lib/libhwloc.dll.a
         CACHE INTERNAL ""
     )
   else()
