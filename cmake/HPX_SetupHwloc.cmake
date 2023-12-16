@@ -22,6 +22,7 @@ if(NOT HPX_WITH_FETCH_HWLOC)
   endif()
 else()
   hpx_info("System: ${CMAKE_GENERATOR_PLATFORM}")
+  hpx_info("System: ${CMAKE_SIZEOF_VOID_P}")
   set(HWLOC_VERSION "2.9")
   set(HWLOC_RELEASE "2.9.3")
   hpx_info(
@@ -72,7 +73,6 @@ else()
         "${CMAKE_BINARY_DIR}/_deps/hwloc-src"
         CACHE INTERNAL ""
     )
-    find_package(hwloc REQUIRED PATHS ${HWLOC_ROOT} NO_DEFAULT_PATH)
     include_directories(${HWLOC_ROOT}/include)
     link_directories(${HWLOC_ROOT}/lib)
     set(Hwloc_INCLUDE_DIR
