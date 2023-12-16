@@ -58,9 +58,9 @@ else()
       )
     endif()
   elseif("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "Win64")
-    hpx_info(
-      "https://download.open-mpi.org/release/hwloc/v${HPX_WITH_HWLOC_VERSION}/hwloc-win64-build-${HPX_WITH_HWLOC_RELEASE}.zip"
-    )
+    # hpx_info(
+    #   "https://download.open-mpi.org/release/hwloc/v${HPX_WITH_HWLOC_VERSION}/hwloc-win64-build-${HPX_WITH_HWLOC_RELEASE}.zip"
+    # )
     fetchcontent_declare(
       HWLoc
       URL https://download.open-mpi.org/release/hwloc/v2.9/hwloc-win64-build-2.9.3.zip
