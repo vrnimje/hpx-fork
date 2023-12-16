@@ -70,8 +70,8 @@ else()
       fetchcontent_populate(HWLoc)
     endif()
     set(HWLOC_ROOT
-        "${CMAKE_BINARY_DIR}/_deps/hwloc-src"
-        CACHE INTERNAL ""
+      "${CMAKE_BINARY_DIR}/_deps/hwloc-src"
+      CACHE INTERNAL ""
     )
     find_package(hwloc REQUIRED PATHS ${HWLOC_ROOT} NO_DEFAULT_PATH)
     include_directories(${HWLOC_ROOT}/include)
