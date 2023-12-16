@@ -21,14 +21,8 @@ if(NOT HPX_WITH_FETCH_HWLOC)
     )
   endif()
 else()
-  set(
-    HWLOC_VERSION 
-    "2.9"
-  )
-  set(
-    HWLOC_RELEASE 
-    "2.9.3"
-  )
+  set(HWLOC_VERSION "2.9")
+  set(HWLOC_RELEASE "2.9.3")
   hpx_info(
     "HPX_WITH_FETCH_HWLOC=${HPX_WITH_FETCH_HWLOC}, Hwloc v{HWLOC_RELEASE} will be fetched using CMake's FetchContent"
   )
@@ -54,16 +48,16 @@ else()
     )
     if(APPLE)
       set(Hwloc_LIBRARY
-        ${HWLOC_ROOT}/lib/libhwloc.dylib
-        CACHE INTERNAL ""
+          ${HWLOC_ROOT}/lib/libhwloc.dylib
+          CACHE INTERNAL ""
       )
     else()
       set(Hwloc_LIBRARY
-        ${HWLOC_ROOT}/lib/libhwloc.so
-        CACHE INTERNAL ""
+          ${HWLOC_ROOT}/lib/libhwloc.so
+          CACHE INTERNAL ""
       )
     endif()
-    
+
   elseif("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "Win64")
     fetchcontent_declare(
       HWLoc
