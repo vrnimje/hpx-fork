@@ -6,7 +6,7 @@
 
 name: macOS CI (Debug) with HWLoc fetch
 
-on: [pull_request]
+on: [pull_request, push]
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
         brew upgrade
         brew update && \
             brew install --overwrite python-tk && \
-            brew install --overwrite boost hwloc gperftools ninja && \
+            brew install --overwrite boost gperftools ninja && \
             brew upgrade cmake
     - name: Configure
       shell: bash
@@ -34,8 +34,8 @@ jobs:
               -Bbuild \
               -GNinja \
               -DCMAKE_BUILD_TYPE=Debug \
-              -DHPX_WITH_FETCH_ASIO=ON \
               -DHPX_WTIH_FETCH_HWLOC=ON \
+              -DHPX_WITH_FETCH_ASIO=ON \
               -DHPX_WITH_EXAMPLES=ON \
               -DHPX_WITH_TESTS=ON \
               -DHPX_WITH_TESTS_MAX_THREADS_PER_LOCALITY=3 \
