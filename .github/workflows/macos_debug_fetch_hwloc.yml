@@ -6,7 +6,7 @@
 
 name: macOS CI (Debug) with HWLoc fetch
 
-on: [pull_request, push]
+on: [pull_request]
 
 jobs:
   build:
