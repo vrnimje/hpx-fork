@@ -85,7 +85,7 @@ else()
   else()
     fetchcontent_declare(
       HWLoc
-      URL https://download.open-mpi.org/release/hwloc/v${HWLOC_VERSION}/hwloc-win64-build-${HWLOC_RELEASE}.zip
+      URL https://download.open-mpi.org/release/hwloc/v${HWLOC_VERSION}/hwloc-win32-build-${HWLOC_RELEASE}.zip
       TLS_VERIFY true
     )
     if(NOT HWLoc_POPULATED)
