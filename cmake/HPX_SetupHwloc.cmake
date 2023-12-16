@@ -21,14 +21,22 @@ if(NOT HPX_WITH_FETCH_HWLOC)
     )
   endif()
 else()
+  set(
+    HWLOC_VERSION 
+    "v2.9"
+  )
+  set(
+    HWLOC_RELEASE 
+    "2.9.3"
+  )
   hpx_info(
-    "HPX_WITH_FETCH_HWLOC=${HPX_WITH_FETCH_HWLOC}, Hwloc will be fetched using CMake's FetchContent"
+    "HPX_WITH_FETCH_HWLOC=${HPX_WITH_FETCH_HWLOC}, Hwloc v{HWLOC_RELEASE} will be fetched using CMake's FetchContent"
   )
   if(UNIX)
     include(FetchContent)
     fetchcontent_declare(
       HWLoc
-      URL https://download.open-mpi.org/release/hwloc/v2.9/hwloc-2.9.3.tar.gz
+      URL https://download.open-mpi.org/release/hwloc/v${HWLOC_VERSION}/hwloc-${HWLOC_RELEASE}.tar.gz
       TLS_VERIFY true
     )
     if(NOT HWLoc_POPULATED)
@@ -59,7 +67,7 @@ else()
   elseif("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "Win64")
     fetchcontent_declare(
       HWLoc
-      URL https://download.open-mpi.org/release/hwloc/v2.9/hwloc-win64-build-2.9.3.zip
+      URL https://download.open-mpi.org/release/hwloc/v${HWLOC_VERSION}/hwloc-win64-build-${HWLOC_RELEASE}.zip
       TLS_VERIFY true
     )
     if(NOT HWLoc_POPULATED)
@@ -83,7 +91,7 @@ else()
   else()
     fetchcontent_declare(
       HWLoc
-      URL https://download.open-mpi.org/release/hwloc/v2.9/hwloc-win64-build-2.9.3.zip
+      URL https://download.open-mpi.org/release/hwloc/v${HWLOC_VERSION}/hwloc-win64-build-${HWLOC_RELEASE}.zip
       TLS_VERIFY true
     )
     if(NOT HWLoc_POPULATED)
