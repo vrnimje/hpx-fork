@@ -23,7 +23,7 @@ if(NOT HPX_WITH_FETCH_HWLOC)
 else()
   set(
     HWLOC_VERSION 
-    "v2.9"
+    "2.9"
   )
   set(
     HWLOC_RELEASE 
