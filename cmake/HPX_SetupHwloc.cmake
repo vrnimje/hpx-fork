@@ -21,16 +21,16 @@ if(NOT HPX_WITH_FETCH_HWLOC)
     )
   endif()
 else()
-  set(HPX_WITH_HWLOC_VERSION "2.9")
-  set(HPX_WITH_HWLOC_RELEASE "2.9.3")
+  # set(HPX_WITH_HWLOC_VERSION "2.9")
+  # set(HPX_WITH_HWLOC_RELEASE "2.9.3")
   hpx_info(
-    "HPX_WITH_FETCH_HWLOC=${HPX_WITH_FETCH_HWLOC}, Hwloc v${HPX_WITH_HWLOC_RELEASE} will be fetched using CMake's FetchContent"
+    "HPX_WITH_FETCH_HWLOC=${HPX_WITH_FETCH_HWLOC}, Hwloc v2.9.3 will be fetched using CMake's FetchContent"
   )
   if(UNIX)
     include(FetchContent)
     fetchcontent_declare(
       HWLoc
-      URL https://download.open-mpi.org/release/hwloc/v${HPX_WITH_HWLOC_VERSION}/hwloc-${HPX_WITH_HWLOC_RELEASE}.tar.gz
+      URL https://download.open-mpi.org/release/hwloc/v2.9/hwloc-2.9.3.tar.gz
       TLS_VERIFY true
     )
     if(NOT HWLoc_POPULATED)
