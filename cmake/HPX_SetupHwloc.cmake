@@ -43,8 +43,8 @@ else()
     endif()
     set(HWLOC_ROOT "${CMAKE_BINARY_DIR}/_deps/hwloc-installed")
     set(Hwloc_INCLUDE_DIR
-        ${HWLOC_ROOT}/include
-        CACHE INTERNAL ""
+      ${HWLOC_ROOT}/include
+      CACHE INTERNAL ""
     )
     if(APPLE)
       set(Hwloc_LIBRARY
@@ -53,8 +53,8 @@ else()
       )
     else()
       set(Hwloc_LIBRARY
-          ${HWLOC_ROOT}/lib/libhwloc.so
-          CACHE INTERNAL ""
+        ${HWLOC_ROOT}/lib/libhwloc.so
+        CACHE INTERNAL ""
       )
     endif()
   elseif("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "Win64")
@@ -77,12 +77,12 @@ else()
     include_directories(${HWLOC_ROOT}/include)
     link_directories(${HWLOC_ROOT}/lib)
     set(Hwloc_INCLUDE_DIR
-        ${HWLOC_ROOT}/include
-        CACHE INTERNAL ""
+      ${HWLOC_ROOT}/include
+      CACHE INTERNAL ""
     )
     set(Hwloc_LIBRARY
-        ${HWLOC_ROOT}/lib/libhwloc.dll.a
-        CACHE INTERNAL ""
+      ${HWLOC_ROOT}/lib/libhwloc.dll.a
+      CACHE INTERNAL ""
     )
   else()
     fetchcontent_declare(
@@ -94,18 +94,18 @@ else()
       fetchcontent_populate(HWLoc)
     endif()
     set(HWLOC_ROOT
-        "${CMAKE_BINARY_DIR}/_deps/hwloc-src"
-        CACHE INTERNAL ""
+      "${CMAKE_BINARY_DIR}/_deps/hwloc-src"
+      CACHE INTERNAL ""
     )
     include_directories(${HWLOC_ROOT}/include)
     link_directories(${HWLOC_ROOT}/lib)
     set(Hwloc_INCLUDE_DIR
-        ${HWLOC_ROOT}/include
-        CACHE INTERNAL ""
+      ${HWLOC_ROOT}/include
+      CACHE INTERNAL ""
     )
     set(Hwloc_LIBRARY
-        ${HWLOC_ROOT}/lib/libhwloc.dll.a
-        CACHE INTERNAL ""
+      ${HWLOC_ROOT}/lib/libhwloc.dll.a
+      CACHE INTERNAL ""
     )
   endif()
 
