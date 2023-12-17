@@ -21,7 +21,7 @@ if(NOT HPX_WITH_FETCH_HWLOC)
     )
   endif()
 else()
-  hpx_info("System: ${CMAKE_GENERATOR}")
+  hpx_info("System: ${CMAKE_VS_PLATFORM_NAME}")
   set(HWLOC_VERSION "2.9")
   set(HWLOC_RELEASE "2.9.3")
   hpx_info(
