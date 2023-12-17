@@ -59,7 +59,7 @@ else()
       )
     endif()
 
-  elseif("${CMAKE_GENERATOR}" STREQUAL "Win64" OR ("CMAKE_SIZEOF_VOID_P" STREQUAL "8"))
+  elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win64" OR "CMAKE_SIZEOF_VOID_P" STREQUAL "8")
     fetchcontent_declare(
       HWLoc
       URL https://download.open-mpi.org/release/hwloc/v${HWLOC_VERSION}/hwloc-win64-build-${HWLOC_RELEASE}.zip
