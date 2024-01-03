@@ -47,16 +47,14 @@ if(HPX_WITH_FETCH_HWLOC)
         "${CMAKE_BINARY_DIR}/_deps/hwloc-src"
         CACHE INTERNAL ""
     )
-    # include_directories(${HWLOC_ROOT}/include)
-    # link_directories(${HWLOC_ROOT}/lib)
     set(Hwloc_INCLUDE_DIR
         ${HWLOC_ROOT}/include
         CACHE INTERNAL ""
     )
-    set(Hwloc_LIBRARY
-        ${HWLOC_ROOT}/lib
-        CACHE INTERNAL ""
-    )
+    # set(Hwloc_LIBRARY
+    #     ${HWLOC_ROOT}/lib/libhwloc.dll.a
+    #     CACHE INTERNAL ""
+    # )
   else()
     fetchcontent_declare(
       HWLoc
@@ -68,16 +66,14 @@ if(HPX_WITH_FETCH_HWLOC)
         "${CMAKE_BINARY_DIR}/_deps/hwloc-src"
         CACHE INTERNAL ""
     )
-    # include_directories(${HWLOC_ROOT}/include)
-    # link_directories(${HWLOC_ROOT}/lib)
     set(Hwloc_INCLUDE_DIR
         ${HWLOC_ROOT}/include
         CACHE INTERNAL ""
     )
-    set(Hwloc_LIBRARIES
-        ${HWLOC_ROOT}/lib
-        CACHE INTERNAL ""
-    )
+    # set(Hwloc_LIBRARIES
+    #     ${HWLOC_ROOT}/lib/libhwloc.dll.a
+    #     CACHE INTERNAL ""
+    # )
   endif() # End hwloc installation
 endif()
 
