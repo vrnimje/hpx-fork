@@ -13,14 +13,7 @@
 # Distributed under the Boost Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-if(NOT HPX_WITH_FETCH_HWLOC)
-  find_package(Hwloc)
-  if(NOT Hwloc_FOUND)
-    hpx_error(
-      "Hwloc could not be found, please specify Hwloc_ROOT to point to the correct location"
-    )
-  endif()
-else()
+if(HPX_WITH_FETCH_HWLOC)
   hpx_info("System: ${CMAKE_SYSTEM_NAME}")
   set(HWLOC_VERSION "2.9")
   set(HWLOC_RELEASE "2.9.3")
@@ -43,22 +36,6 @@ else()
       )
     endif()
     set(HWLOC_ROOT "${CMAKE_BINARY_DIR}/_deps/hwloc-installed")
-    set(Hwloc_INCLUDE_DIR
-        ${HWLOC_ROOT}/include
-        CACHE INTERNAL ""
-    )
-    if(APPLE)
-      set(Hwloc_LIBRARY
-          ${HWLOC_ROOT}/lib/libhwloc.dylib
-          CACHE INTERNAL ""
-      )
-    else()
-      set(Hwloc_LIBRARY
-          ${HWLOC_ROOT}/lib/libhwloc.so
-          CACHE INTERNAL ""
-      )
-    endif()
-
   elseif("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows" AND CMAKE_SIZEOF_VOID_P EQUAL 8)
     fetchcontent_declare(
       HWLoc
@@ -79,7 +56,7 @@ else()
         CACHE INTERNAL ""
     )
     set(Hwloc_LIBRARY
-        ${HWLOC_ROOT}/lib/libhwloc.dll.a
+        ${HWLOC_ROOT}/lib
         CACHE INTERNAL ""
     )
   else()
@@ -102,12 +79,15 @@ else()
         CACHE INTERNAL ""
     )
     set(Hwloc_LIBRARY
-        ${HWLOC_ROOT}/lib/libhwloc.dll.a
+        ${HWLOC_ROOT}/lib
         CACHE INTERNAL ""
     )
   endif() # End hwloc installation
+endif()
 
-  add_library(Hwloc::hwloc INTERFACE IMPORTED)
-  target_include_directories(Hwloc::hwloc INTERFACE ${Hwloc_INCLUDE_DIR})
-  target_link_libraries(Hwloc::hwloc INTERFACE ${Hwloc_LIBRARY})
+find_package(Hwloc)
+if(NOT Hwloc_FOUND)
+  hpx_error(
+    "Hwloc could not be found, please specify Hwloc_ROOT to point to the correct location"
+  )
 endif()
