@@ -42,9 +42,7 @@ if(HPX_WITH_FETCH_HWLOC)
       URL https://download.open-mpi.org/release/hwloc/v${HWLOC_VERSION}/hwloc-win64-build-${HWLOC_RELEASE}.zip
       TLS_VERIFY true
     )
-    if(NOT HWLoc_POPULATED)
-      fetchcontent_populate(HWLoc)
-    endif()
+    fetchcontent_populate(HWLoc)
     set(HWLOC_ROOT
         "${CMAKE_BINARY_DIR}/_deps/hwloc-src"
         CACHE INTERNAL ""
@@ -65,9 +63,7 @@ if(HPX_WITH_FETCH_HWLOC)
       URL https://download.open-mpi.org/release/hwloc/v${HWLOC_VERSION}/hwloc-win32-build-${HWLOC_RELEASE}.zip
       TLS_VERIFY true
     )
-    if(NOT HWLoc_POPULATED)
-      fetchcontent_populate(HWLoc)
-    endif()
+    fetchcontent_populate(HWLoc)
     set(HWLOC_ROOT
         "${CMAKE_BINARY_DIR}/_deps/hwloc-src"
         CACHE INTERNAL ""
