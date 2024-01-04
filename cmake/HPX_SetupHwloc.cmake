@@ -15,8 +15,8 @@
 
 if(HPX_WITH_FETCH_HWLOC)
   hpx_info("System: ${CMAKE_SYSTEM_NAME}")
-  set(HWLOC_VERSION "2.9")
-  set(HWLOC_RELEASE "2.9.3")
+  set(HWLOC_VERSION "2.10")
+  set(HWLOC_RELEASE "2.10.0")
   hpx_info(
     "HPX_WITH_FETCH_HWLOC=${HPX_WITH_FETCH_HWLOC}, Hwloc v${HWLOC_RELEASE} will be fetched using CMake's FetchContent"
   )
@@ -51,10 +51,6 @@ if(HPX_WITH_FETCH_HWLOC)
         ${HWLOC_ROOT}/include
         CACHE INTERNAL ""
     )
-    # set(Hwloc_LIBRARY
-    #     ${HWLOC_ROOT}/lib/libhwloc.dll.a
-    #     CACHE INTERNAL ""
-    # )
   else()
     fetchcontent_declare(
       HWLoc
@@ -70,10 +66,6 @@ if(HPX_WITH_FETCH_HWLOC)
         ${HWLOC_ROOT}/include
         CACHE INTERNAL ""
     )
-    # set(Hwloc_LIBRARIES
-    #     ${HWLOC_ROOT}/lib/libhwloc.dll.a
-    #     CACHE INTERNAL ""
-    # )
   endif() # End hwloc installation
 endif()
 
