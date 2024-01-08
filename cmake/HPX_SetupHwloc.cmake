@@ -51,8 +51,9 @@ if(HPX_WITH_FETCH_HWLOC)
         ${HWLOC_ROOT}/include
         CACHE INTERNAL ""
     )
+    # add_library(HWLoc INTERFACE)
     install(
-      TARGETS Hwloc
+      TARGETS HWLoc
       COMPONENT core
     )
     install(
