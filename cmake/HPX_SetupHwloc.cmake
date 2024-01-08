@@ -52,10 +52,10 @@ if(HPX_WITH_FETCH_HWLOC)
         CACHE INTERNAL ""
     )
     # add_library(HWLoc INTERFACE)
-    install(
-      TARGETS HWLoc
-      COMPONENT core
-    )
+    # install(
+    #   TARGETS HWLoc
+    #   COMPONENT core
+    # )
     install(
       DIRECTORY ${HWLOC_ROOT}/include/
       DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
