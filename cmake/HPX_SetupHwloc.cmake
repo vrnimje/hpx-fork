@@ -86,7 +86,7 @@ if(HPX_WITH_FETCH_HWLOC)
         CACHE INTERNAL ""
     )
     install(
-      TARGETS Hwloc
+      TARGETS HWLoc
       COMPONENT core
     )
     install(
