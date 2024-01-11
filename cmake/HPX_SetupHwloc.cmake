@@ -47,6 +47,8 @@ if(HPX_WITH_FETCH_HWLOC)
         "${CMAKE_BINARY_DIR}/_deps/hwloc-src"
         CACHE INTERNAL ""
     )
+    include_directories(${HWLOC_ROOT}/include)
+    link_directories(${HWLOC_ROOT}/lib)
     set(Hwloc_INCLUDE_DIR
         ${HWLOC_ROOT}/include
         CACHE INTERNAL ""
@@ -62,6 +64,8 @@ if(HPX_WITH_FETCH_HWLOC)
         "${CMAKE_BINARY_DIR}/_deps/hwloc-src"
         CACHE INTERNAL ""
     )
+    include_directories(${HWLOC_ROOT}/include)
+    link_directories(${HWLOC_ROOT}/lib)
     set(Hwloc_INCLUDE_DIR
         ${HWLOC_ROOT}/include
         CACHE INTERNAL ""
