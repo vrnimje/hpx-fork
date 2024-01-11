@@ -55,6 +55,7 @@ if(HPX_WITH_FETCH_HWLOC)
       COMMAND ${CMAKE_COMMAND} -E copy_if_different
           "${HWLOC_ROOT}/bin/libhwloc-15.dll"
           ${PROJECT_BINARY_DIR}
+      OUTPUT ""
     )
   else()
     fetchcontent_declare(
