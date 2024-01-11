@@ -51,26 +51,6 @@ if(HPX_WITH_FETCH_HWLOC)
         ${HWLOC_ROOT}/include
         CACHE INTERNAL ""
     )
-    # add_library(HWLoc INTERFACE)
-    # install(
-    #   TARGETS HWLoc
-    #   COMPONENT core
-    # )
-    install(
-      DIRECTORY ${HWLOC_ROOT}/include/
-      DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-      COMPONENT core
-    )
-    install(
-      DIRECTORY ${HWLOC_ROOT}/bin/
-      DESTINATION ${CMAKE_INSTALL_BINDIR}
-      COMPONENT core
-    )
-    install(
-      DIRECTORY ${HWLOC_ROOT}/lib/
-      DESTINATION ${CMAKE_INSTALL_LIBDIR}
-      COMPONENT core
-    )
   else()
     fetchcontent_declare(
       HWLoc
@@ -85,25 +65,6 @@ if(HPX_WITH_FETCH_HWLOC)
     set(Hwloc_INCLUDE_DIR
         ${HWLOC_ROOT}/include
         CACHE INTERNAL ""
-    )
-    install(
-      TARGETS HWLoc
-      COMPONENT core
-    )
-    install(
-      DIRECTORY ${HWLOC_ROOT}/include/
-      DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-      COMPONENT core
-    )
-    install(
-      DIRECTORY ${HWLOC_ROOT}/bin/
-      DESTINATION ${CMAKE_INSTALL_BINDIR}
-      COMPONENT core
-    )
-    install(
-      DIRECTORY ${HWLOC_ROOT}/lib/
-      DESTINATION ${CMAKE_INSTALL_LIBDIR}
-      COMPONENT core
     )
   endif() # End hwloc installation
 endif()
