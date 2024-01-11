@@ -2324,9 +2324,9 @@ if(HPX_WITH_EXAMPLES)
   add_hpx_pseudo_target(examples)
   if (HPX_WITH_FETCH_HWLOC AND "${CMAKE_SYSTEM_NAME}" STREQUAL "Windows" AND CMAKE_SIZEOF_VOID_P EQUAL 8)
     add_custom_target(HPXHwlocExamplesTarget ALL
+      COMMAND echo "${HWLOC_ROOT}"
       COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/$<CONFIG>/bin/" 
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different
-          "${HWLOC_ROOT}/bin/libhwloc-15.dll" "${CMAKE_BINARY_DIR}/$<CONFIG>/bin/"
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${HWLOC_ROOT}/bin/libhwloc-15.dll" "${CMAKE_BINARY_DIR}/$<CONFIG>/bin/"
     )
     add_hpx_pseudo_dependencies(examples HPXHwlocExamplesTarget)
   endif()
