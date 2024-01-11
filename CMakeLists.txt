@@ -2316,7 +2316,7 @@ if(HPX_WITH_TESTS)
     add_hpx_pseudo_dependencies(tests tests.examples)
   endif()
 
-  hpx_info("TP: ${HWLOC_ROOT} & ${Hwloc_ROOT}")
+  # hpx_info("TP: ${HWLOC_ROOT} & ${Hwloc_ROOT}")
 
   if(HPX_WITH_FETCH_HWLOC AND "${CMAKE_SYSTEM_NAME}" STREQUAL "Windows" AND CMAKE_SIZEOF_VOID_P EQUAL 8)
     add_custom_target(HPXHwlocTestsTarget ALL
@@ -2335,7 +2335,7 @@ if(HPX_WITH_EXAMPLES)
   if(HPX_WITH_FETCH_HWLOC AND "${CMAKE_SYSTEM_NAME}" STREQUAL "Windows" AND CMAKE_SIZEOF_VOID_P EQUAL 8)
     add_custom_target(HPXHwlocTarget ALL
       COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/$<CONFIG>/bin/"
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${HWLOC_ROOT}/bin/libhwloc-15.dll" "${CMAKE_BINARY_DIR}/$<CONFIG>/bin/"
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${Hwloc_ROOT}/bin/libhwloc-15.dll" "${CMAKE_BINARY_DIR}/$<CONFIG>/bin/"
     )
     add_hpx_pseudo_dependencies(examples HPXHwlocTarget)
   endif()
