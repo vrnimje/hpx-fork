@@ -2186,14 +2186,6 @@ include(HPX_SetupAsio)
 include(HPX_SetupAllocator)
 include(HPX_SetupHwloc)
 
-if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
-  add_custom_command(TARGET hpx_base_libraries POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different
-      "${HWLOC_ROOT}/bin/libhwloc-15.dll"
-      $<TARGET_FILE_DIR>
-  )
-endif()
-
 # reset external source lists
 add_hpx_library_sources_noglob(hpx_external)
 add_hpx_library_headers_noglob(hpx_external)
