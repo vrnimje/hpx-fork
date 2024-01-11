@@ -51,12 +51,6 @@ if(HPX_WITH_FETCH_HWLOC)
         ${HWLOC_ROOT}/include
         CACHE INTERNAL ""
     )
-    add_custom_command(POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different
-          "${HWLOC_ROOT}/bin/libhwloc-15.dll"
-          ${PROJECT_BINARY_DIR}
-      OUTPUT ""
-    )
   else()
     fetchcontent_declare(
       HWLoc
