@@ -6,9 +6,10 @@
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 if (HPX_WITH_FETCH_BOOST)
+  set(HPX_WITH_BOOST_VERSION "1.84.0")
   include(FetchContent)
   FetchContent_Declare(Boost
-      URL https://github.com/boostorg/boost/releases/download/boost-1.84.0/boost-1.84.0.tar.gz
+      URL https://github.com/boostorg/boost/releases/download/boost-${HPX_WITH_BOOST_VERSION}/boost-${HPX_WITH_BOOST_VERSION}.tar.gz
       TLS_VERIFY true
   )
   FetchContent_Populate(Boost)
@@ -28,14 +29,8 @@ if (HPX_WITH_FETCH_BOOST)
     set(EX_PRC_INTERNAL ${EX_PRC} CACHE INTERNAL "for internal use only; do not modify")
   endif()
 
-  if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    set(Boost_DIR "${CMAKE_BINARY_DIR}/_deps/boost-src")
-    set(Boost_INCLUDE_DIR "${CMAKE_BINARY_DIR}/_deps/boost-src")
-    set(Boost_LIBRARY_DIR "${CMAKE_BINARY_DIR}/_deps/boost-src/stage/lib")
-  else()
-    set(Boost_DIR "${CMAKE_BINARY_DIR}/_deps/boost-src")
-    set(Boost_INCLUDE_DIR "${CMAKE_BINARY_DIR}/_deps/boost-src")
-  endif()
+  set(Boost_DIR "${CMAKE_BINARY_DIR}/_deps/boost-src")
+  set(Boost_INCLUDE_DIR "${CMAKE_BINARY_DIR}/_deps/boost-src")
 endif()
 
 # In case find_package(HPX) is called multiple times
