@@ -2330,6 +2330,8 @@ if(HPX_WITH_TESTS)
   include(CTest)
 endif()
 
+include(HPX_SetupGBench)
+
 if(HPX_WITH_EXAMPLES)
   add_hpx_pseudo_target(examples)
   if(HPX_WITH_FETCH_HWLOC AND "${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
@@ -2524,6 +2526,7 @@ if(HPX_WITH_PRECOMPILED_HEADERS)
       <boost/fusion/include/vector.hpp>
       <boost/optional.hpp>
       <boost/spirit/home/x3.hpp>
+      <benchmark/benchmark.h>
   )
 
   if(HPX_WITH_CXX17_FILESYSTEM)
