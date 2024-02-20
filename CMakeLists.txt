@@ -958,6 +958,16 @@ if(HPX_WITH_APEX)
   )
 endif()
 
+hpx_option(
+  HPX_WITH_TRACY BOOL "Enable Tracy instrumentation support." OFF
+  CATEGORY "Profiling"
+)
+
+if(HPX_WITH_TRACY)
+  add_compile_definitions(HPX_HAVE_TRACY) # tell HPX that we use Tracy
+  include(HPX_SetupTracy)
+endif()
+
 # Options for automatically fetching Asio
 hpx_option(
   HPX_WITH_FETCH_ASIO

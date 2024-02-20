@@ -160,6 +160,11 @@ foreach(example_program ${example_programs})
   target_link_libraries(
     ${example_program} PRIVATE ${${example_program}_LIBRARIES}
   )
+  if(HPX_WITH_TRACY)
+    target_link_libraries(
+      ${example_program} PUBLIC TracyClient
+    )
+  endif()
   add_hpx_example_target_dependencies("quickstart" ${example_program})
 
   if(HPX_WITH_TESTS

@@ -19,6 +19,10 @@
 #include <cstdint>
 #include <iostream>
 
+#if defined(HPX_HAVE_TRACY)
+#include <Tracy.hpp>
+#endif
+
 ///////////////////////////////////////////////////////////////////////////////
 //[fib_action
 // forward declaration of the Fibonacci function
@@ -33,6 +37,9 @@ HPX_PLAIN_ACTION(fibonacci, fibonacci_action)
 //[fib_func
 std::uint64_t fibonacci(std::uint64_t n)
 {
+    #if defined(HPX_WITH_TRACY)
+    ZoneScoped;
+    #endif
     if (n < 2)
         return n;
 
