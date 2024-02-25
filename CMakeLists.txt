@@ -1000,7 +1000,7 @@ hpx_option(
 )
 
 hpx_option(
-  HPX_WITH_NANOBENCH_BENCHMARKS
+  HPX_WITH_NANOBENCH
   BOOL
   "Use Nanobench for performance tests. Nanobench will be fetched using FetchContent (defualt: OFF)"
   OFF
@@ -1243,6 +1243,10 @@ if(HPX_WITH_NETWORKING)
   )
   if(HPX_WITH_PARCELPORT_ACTION_COUNTERS)
     hpx_add_config_define(HPX_HAVE_PARCELPORT_ACTION_COUNTERS)
+  endif()
+  if (HPX_WITH_NANOBENCH)
+    hpx_add_config_define(HPX_HAVE_NANOBENCH)
+    include(HPX_SetupNanobench)
   endif()
 else(HPX_WITH_NETWORKING)
   # if networking is off,  then allow the option of using our asynchronous MPI
@@ -2195,9 +2199,6 @@ endif()
 # should be found separately in the appropriate subdirectory.
 
 include(HPX_SetupThreads)
-if (HPX_WITH_NANOBENCH_BENCHMARKS)
-  include(HPX_SetupNanobench)
-endif()
 
 # Setup our required Boost libraries.
 include(HPX_SetupBoost)
@@ -2527,8 +2528,11 @@ if(HPX_WITH_PRECOMPILED_HEADERS)
       <boost/fusion/include/vector.hpp>
       <boost/optional.hpp>
       <boost/spirit/home/x3.hpp>
-      <nanobench.h>
   )
+
+  if (HPX_WITH_NANOBENCH) 
+    set(system_precompiled_headers ${system_precompiled_headers} <nanobench.h>)
+  endif()
 
   if(HPX_WITH_CXX17_FILESYSTEM)
     list(APPEND system_precompiled_headers <filesystem>)
