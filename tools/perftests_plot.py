@@ -2,30 +2,33 @@ import sys
 import json
 import matplotlib.pyplot as plt
 
-file_name = sys.argv[1]
+if len(sys.argv != 2):
+    print("Usage: python perftests_plot.py [benchmark_output_file_name]")
+else:
+    file_name = sys.argv[1]
 
-fptr = open(file_name, "r")
-contents = fptr.read()
+    fptr = open(file_name, "r")
+    contents = fptr.read()
 
-print(contents)
+    print(contents)
 
-# Create a json ob
-json_obj = json.loads(contents)
+    # Create a json ob
+    json_obj = json.loads(contents)
 
-test_names = []
-samples = []
+    test_names = []
+    samples = []
 
-for test in json_obj["outputs"]:
-    test_names.append(test["name"] + "," + test["executor"])
-    samples.append(test["series"])
+    for test in json_obj["outputs"]:
+        test_names.append(test["name"] + "," + test["executor"])
+        samples.append(test["series"])
 
-fig = plt.figure()
-ax = fig.add_subplot()
-bp = ax.boxplot(samples)
+    fig = plt.figure()
+    ax = fig.add_subplot()
+    bp = ax.boxplot(samples)
 
-ax.set_xticklabels(test_names)
+    ax.set_xticklabels(test_names)
 
-plt.show()
+    plt.show()
 
 
     
