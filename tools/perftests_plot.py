@@ -2,7 +2,8 @@ import sys
 import json
 import matplotlib.pyplot as plt
 
-if len(sys.argv != 2):
+if len(sys.argv) != 2:
+    print("No input file detected!")
     print("Usage: python perftests_plot.py [benchmark_output_file_name]")
 else:
     file_name = sys.argv[1]
