@@ -628,10 +628,6 @@ namespace hpx::local::detail {
         {
             print_config(ini_config);
         }
-        
-        if (vm.count("hpx:verbose_bench")) {
-            verbose_ = true;
-        }
 
         return true;
     }
