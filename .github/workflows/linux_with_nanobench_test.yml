@@ -6,7 +6,7 @@
 
 name: Linux CI (Debug) with Nanobench Benchmark Test
 
-on: [pull_request]
+on: [pull_request, push]
 
 
 jobs:
@@ -42,11 +42,11 @@ jobs:
           ./bin/minmax_element_performance_test
           ./bin/minmax_element_performance_test > prev_results.txt
     
-    - name: 'Upload these results for baselines'
+    - name: Upload these results for baselines
       uses: actions/upload-artifact@v3
         with:
-          name: previous_results
-          path: ./build/prev_results.txt
+          name: previous-results
+          path: build/prev_results.txt
 
     - name: Test with detailed output
       shell: bash
