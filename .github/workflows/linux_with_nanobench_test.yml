@@ -40,6 +40,13 @@ jobs:
       run: |
           cd build
           ./bin/minmax_element_performance_test
+          ./bin/minmax_element_performance_test > prev_results.txt
+    
+    - name: 'Upload these results for baselines'
+      uses: actions/upload-artifact@v3
+        with:
+          name: previous_results
+          path: ./build/prev_results.txt
 
     - name: Test with detailed output
       shell: bash
