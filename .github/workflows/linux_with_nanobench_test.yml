@@ -44,9 +44,9 @@ jobs:
     
     - name: Upload these results for baselines
       uses: actions/upload-artifact@v3
-        with:
-          name: previous-results
-          path: build/prev_results.txt
+      with:
+        name: previous-results
+        path: build/prev_results.txt
 
     - name: Test with detailed output
       shell: bash
