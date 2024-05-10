@@ -35,6 +35,14 @@ jobs:
       shell: bash
       run: |
           cmake --build build/ --target tests.performance.modules.segmented_algorithms.minmax_element_performance
+    - name: Get previous baselines
+      uses: actions/upload-artifact@v4
+      with:
+        name: previous-results
+    - name: Display previous benchmarks
+      shell: bash
+      run: |
+          cat prev_results.txt
     - name: Test
       shell: bash
       run: |
@@ -43,7 +51,7 @@ jobs:
           ./bin/minmax_element_performance_test > prev_results.txt
     
     - name: Upload these results for baselines
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: previous-results
         path: build/prev_results.txt
