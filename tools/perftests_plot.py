@@ -3,6 +3,8 @@ import sys
 import json
 import matplotlib.pyplot as plt
 
+#test change
+
 if len(sys.argv) != 3:
     print("Usage: python perftests_plot.py [path_to_first_result.json] [path_to_second_result.json]")
 else:
