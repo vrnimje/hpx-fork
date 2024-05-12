@@ -16,8 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        ref: nano_test
     - name: Configure
       shell: bash
       run: |
@@ -49,36 +47,22 @@ jobs:
           cd build
           ./bin/minmax_element_performance_test --detailed_bench
 
-    - name: Checkout to PR branch
-      uses: actions/checkout@v4
-
-    - name: Configure PR branch
+    - name: Checkout to master
       shell: bash
       run: |
-          cmake \
-              . \
-              -Bbuild \
-              -GNinja \
-              -DCMAKE_BUILD_TYPE=Debug \
-              -DHPX_WITH_MALLOC=system \
-              -DHPX_WITH_FETCH_ASIO=ON \
-              -DHPX_WITH_EXAMPLES=ON \
-              -DHPX_WITH_TESTS=ON \
-              -DHPX_WITH_NANOBENCH=ON \
-              -DHPX_WITH_TESTS_MAX_THREADS_PER_LOCALITY=2 \
-              -DHPX_WITH_CHECK_MODULE_DEPENDENCIES=On
+          git checkout nano_test
 
-    - name: Build PR branch
+    - name: Build master
       shell: bash
       run: |
           cmake --build build/ --target tests.performance.modules.segmented_algorithms.minmax_element_performance
-    - name: Test PR
+    - name: Test master
       shell: bash
       run: |
           cd build
           ./bin/minmax_element_performance_test
 
-    - name: Test PR with detailed output
+    - name: Test master with detailed output
       shell: bash
       run: |
           cd build
