@@ -6,8 +6,7 @@
 
 name: Linux CI (Debug) with Nanobench Benchmark Test
 
-on: [pull_request, push]
-
+on: [pull_request]
 
 jobs:
   build:
@@ -45,13 +44,13 @@ jobs:
       shell: bash
       run: |
           cd build
-          ./bin/minmax_element_performance_test --detailed_bench
+          ./bin/minmax_element_performance_test --detailed_bench > bench1.json
 
     - name: Checkout to master
       shell: bash
       run: |
           git config --global --add safe.directory '*'
-          git fetch
+          git fetch origin/nano_test
           git checkout nano_test
 
     - name: Build master
@@ -68,4 +67,34 @@ jobs:
       shell: bash
       run: |
           cd build
-          ./bin/minmax_element_performance_test --detailed_bench
+          ./bin/minmax_element_performance_test --detailed_bench > bench2.json
+
+    - name: Gen bench img
+      shell: bash
+      run: |
+          cd tools
+          python3 perftests_plot.py ../build/bench1.json ../build/bench2.json
+
+    - name: Upload img
+      uses: actions/upload-artifacts@v4
+      id: artifact-upload-step
+      with:
+        name: test-img
+        path: tools/test.jpg
+
+    - name: Comment on PR
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '[res](${{ steps.artifact-upload-step.outputs.artifact-url }})'
+          })
+
+
+
+    
+          
