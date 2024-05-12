@@ -76,7 +76,7 @@ jobs:
           python3 perftests_plot.py ../build/bench1.json ../build/bench2.json
 
     - name: Upload img
-      uses: actions/upload-artifacts@v4
+      uses: actions/upload-artifact@v4
       id: artifact-upload-step
       with:
         name: test-img
