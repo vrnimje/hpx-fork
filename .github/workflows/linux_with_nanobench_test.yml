@@ -50,6 +50,7 @@ jobs:
     - name: Checkout to master
       shell: bash
       run: |
+          git config --global --add safe.directory '*'
           git checkout nano_test
 
     - name: Build master
