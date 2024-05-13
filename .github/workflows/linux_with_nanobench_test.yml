@@ -73,6 +73,7 @@ jobs:
       shell: bash
       run: |
           cd tools
+          pip install matplotlib
           python3 perftests_plot.py ../build/bench1.json ../build/bench2.json
 
     - name: Upload img
