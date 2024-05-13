@@ -46,30 +46,30 @@ jobs:
           cd build
           ./bin/minmax_element_performance_test --detailed_bench > bench1.json
 
-    - name: Checkout to master
+    - name: Checkout to target
       shell: bash
       run: |
           git config --global --add safe.directory '*'
-          git fetch origin nano_test:nano_test
-          git checkout nano_test
+          git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
+          git checkout ${{ github.base_ref }}
 
-    - name: Build master
+    - name: Build target branch
       shell: bash
       run: |
           cmake --build build/ --target tests.performance.modules.segmented_algorithms.minmax_element_performance
-    - name: Test master
+    - name: Test target branch
       shell: bash
       run: |
           cd build
           ./bin/minmax_element_performance_test
 
-    - name: Test master with detailed output
+    - name: Test target branch with detailed output
       shell: bash
       run: |
           cd build
           ./bin/minmax_element_performance_test --detailed_bench > bench2.json
 
-    - name: Gen bench img
+    - name: Generate bench img
       shell: bash
       run: |
           cd tools
