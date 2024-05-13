@@ -50,7 +50,7 @@ jobs:
       shell: bash
       run: |
           git config --global --add safe.directory '*'
-          git fetch origin/nano_test
+          git fetch origin nano_test:nano_test
           git checkout nano_test
 
     - name: Build master
