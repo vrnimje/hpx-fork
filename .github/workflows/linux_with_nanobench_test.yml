@@ -76,29 +76,21 @@ jobs:
           pip install matplotlib
           python3 perftests_plot.py ../build/bench1.json ../build/bench2.json
 
-    # - name: Upload img
-    #   uses: actions/upload-artifact@v4
-    #   id: artifact-upload-step
-    #   with:
-    #     name: test-img
-    #     path: tools/test.jpg
+    - name: Upload img
+      uses: actions/upload-artifact@v4
+      id: artifact-upload-step
+      with:
+        name: test-img
+        path: tools/test.jpg
 
     - name: Comment on PR
       uses: actions/github-script@v6
       with:
         github-token: ${{ github.token }}
         script: |
-          const fs = require('fs');
-
-          const imageData = fs.readFileSync('tools/test.jpg');
-          const base64Image = Buffer.from(imageData).toString('base64');
-
-          const commentBody = `![res](data:image/jpeg;base64,${base64Image})`;
-
           github.rest.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: commentBody
+            body: '![res](${{ steps.artifact-upload-step.outputs.artifact-url }}/test.jpg)'
           })
-
