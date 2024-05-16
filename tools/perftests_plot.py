@@ -1,9 +1,6 @@
 import sys
-# import subprocess
 import json
 import matplotlib.pyplot as plt
-
-#test change
 
 if len(sys.argv) != 3:
     print("Usage: python perftests_plot.py [path_to_first_result.json] [path_to_second_result.json]")
@@ -19,7 +16,7 @@ else:
 
     for test1, test2 in zip(json_obj1["outputs"], json_obj2["outputs"]):
         if test1["name"] == test2["name"]:
-            test_names.append(test1["name"] + ",\n" + test1["executor"])
+            test_names.append(test1["name"] + " (current),\n" + test1["executor"])
             samples.append(test1["series"])
             test_names.append(test2["name"] + ",\n" + test2["executor"])
             samples.append(test2["series"])
