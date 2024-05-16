@@ -75,27 +75,23 @@ jobs:
           cd tools
           pip install matplotlib
           python3 perftests_plot.py ../build/bench1.json ../build/bench2.json
+          mv test.img ../build/
 
     - name: Upload img
-      uses: actions/upload-artifact@v4
-      id: artifact-upload-step
-      with:
-        name: test-img
-        path: tools/test.jpg
+        uses: devicons/public-upload-to-imgur@v2.2.2
+        id: imgur_step
+        with:
+          path: ./tools/img.png 
+          client_id: ${{secrets.IMGUR_CLIENT_ID}} 
 
-    # - name: Comment on PR
-    #   uses: actions/github-script@v6
-    #   with:
-    #     github-token: ${{ github.token }}
-    #     script: |
-    #       github.rest.issues.createComment({
-    #         issue_number: context.issue.number,
-    #         owner: context.repo.owner,
-    #         repo: context.repo.repo,
-    #         body: '![res](${{ steps.artifact-upload-step.outputs.artifact-url }}/test.jpg)'
-    #       })
-
-    - name: PR comment with file
-      uses: thollander/actions-comment-pull-request@v2
+    - name: Comment on PR
+      uses: actions/github-script@v6
       with:
-        filePath: tools/test.jpg
+        github-token: ${{ github.token }}
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '![res](${{ fromJSON(steps.imgur_step.outputs.imgur_urls)[0] }})'
+          })
