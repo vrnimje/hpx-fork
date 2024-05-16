@@ -84,9 +84,21 @@ jobs:
     #     path: tools/test.jpg
 
     - name: Comment on PR
-      uses: edunad/actions-image@v2.0.0
+      uses: actions/github-script@v6
       with:
-          path: './tools/test.jpg'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          title: 'Performance report for minmax_element'
+        github-token: ${{ github.token }}
+        script: |
+          const fs = require('fs');
+
+          const imageData = fs.readFileSync('tools/test.jpg');
+          const base64Image = Buffer.from(imageData).toString('base64');
+
+          const commentBody = `![res](data:image/jpeg;base64,${base64Image})`;
+
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: commentBody
+          })
 
