@@ -75,7 +75,6 @@ jobs:
           cd tools
           pip install matplotlib
           python3 perftests_plot.py ../build/bench1.json ../build/bench2.json
-          mv test.img ../build/
 
     - name: Upload img
       uses: devicons/public-upload-to-imgur@v2.2.2
