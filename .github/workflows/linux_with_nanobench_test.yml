@@ -80,7 +80,7 @@ jobs:
       uses: devicons/public-upload-to-imgur@v2.2.2
       id: imgur_step
       with:
-        path: ./tools/img.png 
+        path: ./tools/test.jpg 
         client_id: ${{secrets.IMGUR_CLIENT_ID}} 
 
     - name: Comment on PR
