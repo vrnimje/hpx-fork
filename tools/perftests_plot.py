@@ -2,10 +2,9 @@ import sys
 import json
 import matplotlib.pyplot as plt
 
-if len(sys.argv) != 3:
-    print("Usage: python perftests_plot.py [path_to_first_result.json] [path_to_second_result.json]")
+if len(sys.argv) != 4:
+    print("Usage: python perftests_plot.py [path_to_first_result.json] [path_to_second_result.json] [perftest_name]")
 else:
-    test_name = sys.argv[1]
     f1 = open(sys.argv[1], 'r')
     f2 = open(sys.argv[2], 'r')
     json_obj1 = json.loads(f1.read())
@@ -29,5 +28,5 @@ else:
     plt.setp(ax.set_xticklabels(test_names), fontsize=7)
     plt.ylabel("Execution time")
     # plt.show()
-    plt.savefig("test.jpg")
+    plt.savefig(sys.argv[3] + ".jpg")
     
