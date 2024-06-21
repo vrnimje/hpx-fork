@@ -39,59 +39,8 @@ jobs:
       run: |
           cd build
           ./bin/minmax_element_performance_test
-
     - name: Test with detailed output
       shell: bash
       run: |
           cd build
-          ./bin/minmax_element_performance_test --detailed_bench > bench1.json
-
-    - name: Checkout to target
-      shell: bash
-      run: |
-          git config --global --add safe.directory '*'
-          git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
-          git checkout ${{ github.base_ref }}
-
-    - name: Build target branch
-      shell: bash
-      run: |
-          cmake --build build/ --target tests.performance.modules.segmented_algorithms.minmax_element_performance
-    - name: Test target branch
-      shell: bash
-      run: |
-          cd build
-          ./bin/minmax_element_performance_test
-
-    - name: Test target branch with detailed output
-      shell: bash
-      run: |
-          cd build
-          ./bin/minmax_element_performance_test --detailed_bench > bench2.json
-
-    - name: Generate bench img
-      shell: bash
-      run: |
-          cd tools
-          pip install matplotlib
-          python3 perftests_plot.py ../build/bench2.json ../build/bench1.json
-
-    - name: Upload img
-      uses: devicons/public-upload-to-imgur@v2.2.2
-      id: imgur_step
-      with:
-        path: ./tools/test.jpg 
-        client_id: ${{secrets.IMGUR_CLIENT_ID}} 
-
-    - name: Comment on PR
-      uses: actions/github-script@v6
-      with:
-        github-token: ${{ github.token }}
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: `#### Performance report
-            ![res](${{ fromJSON(steps.imgur_step.outputs.imgur_urls)[0] }})`
-          })
+          ./bin/minmax_element_performance_test --detailed_bench
