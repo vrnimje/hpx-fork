@@ -21,9 +21,9 @@ foreach(benchmark ${benchmarks})
     FOLDER "Benchmarks/Modules/Full/SegmentedAlgorithms"
   )
 
-  add_hpx_performance_test(
-    "modules.segmented_algorithms" ${benchmark} ${${benchmark}_PARAMETERS}
-  )
+#   add_hpx_performance_test(
+#     "modules.segmented_algorithms" ${benchmark} ${${benchmark}_PARAMETERS}
+#   )
 
   add_hpx_performance_report_test(
     "modules.segmented_algorithms" ${benchmark}_perftest

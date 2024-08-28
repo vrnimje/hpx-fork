@@ -185,11 +185,11 @@ foreach(benchmark ${benchmarks})
   target_link_libraries(${benchmark}_test PRIVATE ${${benchmark}_LIBRARIES})
 
   if(NOT "${${benchmark}_PARAMETERS}" MATCHES NO_HPX_MAIN)
-    add_hpx_performance_test("local" ${benchmark} ${${benchmark}_PARAMETERS})
     if(${benchmark} IN_LIST perftest_reports)
       add_hpx_performance_report_test(
-        "local" ${benchmark}_perftest ${${benchmark}_perftest_PARAMETERS}
-      )
+        "local" ${benchmark}_perftest ${${benchmark}_perftest_PARAMETERS})
+    else()
+      add_hpx_performance_test("local" ${benchmark} ${${benchmark}_PARAMETERS})
     endif()
   endif()
 endforeach()
