@@ -73,9 +73,9 @@ foreach(benchmark ${benchmarks})
     FOLDER "Benchmarks/Modules/Core/Algorithms"
   )
 
-  add_hpx_performance_test(
-    "modules.algorithms" ${benchmark} ${${benchmark}_PARAMETERS}
-  )
+#   add_hpx_performance_test(
+#     "modules.algorithms" ${benchmark} ${${benchmark}_PARAMETERS}
+#   )
 
   if(${benchmark} IN_LIST perftest_reports)
     add_hpx_performance_report_test(

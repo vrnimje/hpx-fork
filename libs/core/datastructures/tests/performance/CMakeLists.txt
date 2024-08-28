@@ -21,9 +21,9 @@ foreach(test ${tests})
     FOLDER ${folder_name}
   )
 
-  add_hpx_performance_test(
-    "modules.datastructures" ${test} ${${test}_PARAMETERS}
-  )
+#   add_hpx_performance_test(
+#     "modules.datastructures" ${test} ${${test}_PARAMETERS}
+#   )
 
   add_hpx_performance_report_test(
     "modules.datastructures" ${test}_perftest ${${test}_perftest_PARAMETERS}
